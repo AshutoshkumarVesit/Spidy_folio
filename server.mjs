@@ -147,6 +147,6 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   try { process.loadEnvFile(path.join(root, '.env')); } catch (error) { if (error.code !== 'ENOENT') throw error; }
   const config = serverConfig();
   const server = createPortfolioServer(config);
-  server.on('error', error => { console.error(error.code === 'EADDRINUSE' ? `Port ${port} is in use. Stop the old portfolio preview first.` : 'Preview could not start.'); process.exitCode = 1; });
+  server.on('error', error => { console.error(error.code === 'EADDRINUSE' ? `Port ${config.port} is in use. Stop the old portfolio preview first.` : 'Preview could not start.'); process.exitCode = 1; });
   server.listen(config.port, config.host, () => console.log(`Portfolio: ${config.allowedOrigin || `http://127.0.0.1:${config.port}`}/?motion=full\nSpidy: ${config.apiKey ? 'Groq enabled' : 'saved portfolio answers (add GROQ_API_KEY to .env for AI)'}`));
 }
