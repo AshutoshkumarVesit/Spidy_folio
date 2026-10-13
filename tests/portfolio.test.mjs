@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { once } from 'node:events';
-import { createPortfolioServer, validateAnswer, validateInput } from '../server.mjs';
+import http from 'node:http';
+import { createPortfolioServer, serverConfig, validateAnswer, validateInput } from '../server.mjs';
 import { facts, savedAnswer } from '../public-knowledge.mjs';
 import { SwingWorld } from '../swing-world.mjs';
 
@@ -11,6 +12,31 @@ async function withServer(options, run) {
   try { await run(origin); } finally { await new Promise(resolve => server.close(resolve)); }
 }
 const post = (origin, body, extra = {}) => fetch(`${origin}/api/chat`, { method: 'POST', headers: { Origin: origin, 'Content-Type': 'application/json', ...extra }, body: JSON.stringify(body) });
+
+test('deployment reads the platform port and HTTPS address while local serving stays loopback', () => {
+  const local = serverConfig({}); assert.equal(local.host, '127.0.0.1'); assert.equal(local.port, 5173);
+  const deployed = serverConfig({ APP_URL: 'https://ashuverse.antideploy.app/', PORT: '3000', NODE_ENV: 'production' });
+  assert.equal(deployed.host, '0.0.0.0'); assert.equal(deployed.port, 3000); assert.equal(deployed.allowedOrigin, 'https://ashuverse.antideploy.app');
+  assert.equal(serverConfig({ APP_URL: 'https://platform.example', ALLOWED_ORIGIN: 'https://custom.example' }).allowedOrigin, 'https://custom.example');
+  assert.throws(() => serverConfig({ PORT: 'invalid' }));
+});
+
+test('HTTPS proxy requests retain host/origin restrictions and internal health probes work', async () => {
+  await withServer({ allowedOrigin: 'https://ashuverse.antideploy.app' }, async origin => {
+    const headers = { Host: 'ashuverse.antideploy.app', Origin: 'https://ashuverse.antideploy.app', 'Content-Type': 'application/json' };
+    // Native HTTP preserves the proxy's Host header; Node fetch rewrites it.
+    const proxyRequest = (url, requestHeaders, body) => new Promise((resolve, reject) => {
+      http.request(url, { method: body ? 'POST' : 'GET', headers: requestHeaders }, response => {
+        response.resume(); response.on('end', () => resolve(response.statusCode));
+      }).on('error', reject).end(body);
+    });
+    assert.equal(await proxyRequest(origin, headers), 200);
+    assert.equal(await proxyRequest(`${origin}/api/chat`, headers, JSON.stringify({ message: 'Explain SmartML' })), 200);
+    assert.equal(await proxyRequest(`${origin}/api/chat`, { ...headers, Origin: 'https://evil.example' }, JSON.stringify({ message: 'hi' })), 403);
+    assert.equal((await fetch(origin)).status, 403);
+    assert.equal((await fetch(`${origin}/healthz`)).status, 200);
+  });
+});
 
 test('rope constrains a held swing and release preserves velocity', () => {
   const w = new SwingWorld(900, 420); w.hold(true);

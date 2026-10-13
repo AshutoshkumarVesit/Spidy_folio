@@ -55,6 +55,17 @@ export function validateAnswer(value) {
   return { answer: value.answer.trim(), sourceIds: [...new Set(value.sourceIds)], actionIds: [...new Set(value.actionIds)] };
 }
 
+export function serverConfig(env = process.env) {
+  const publicUrl = env.ALLOWED_ORIGIN || env.APP_URL || env.SITE_URL || '';
+  const allowedOrigin = publicUrl ? new URL(publicUrl).origin : '';
+  const port = Number(env.PORT || 5173);
+  if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('PORT must be between 1 and 65535.');
+  return {
+    apiKey: env.GROQ_API_KEY || '', model: env.GROQ_MODEL || 'openai/gpt-oss-20b', allowedOrigin, port,
+    host: env.HOST || (env.NODE_ENV === 'production' || allowedOrigin ? '0.0.0.0' : '127.0.0.1')
+  };
+}
+
 export function createPortfolioServer({ apiKey = '', model = 'openai/gpt-oss-20b', fetchImpl = fetch, allowedOrigin = '', now = Date.now, rateLimit = 12 } = {}) {
   const visitors = new Map();
   let windowStart = now(), globalCount = 0, day = Math.floor(now() / 86400000), dailyCount = 0, pending = 0;
@@ -75,6 +86,8 @@ export function createPortfolioServer({ apiKey = '', model = 'openai/gpt-oss-20b
     res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
     res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'");
     try {
+      // Container probes can use an internal Host; this exposes no application data.
+      if (req.url === '/healthz' && ['GET', 'HEAD'].includes(req.method)) return json(res, 200, { ok: true });
       const ownOrigin = `http://${req.headers.host}`;
       const host = new URL(ownOrigin).hostname;
       const expected = allowedOrigin ? new URL(allowedOrigin).host : null;
@@ -132,8 +145,8 @@ export function createPortfolioServer({ apiKey = '', model = 'openai/gpt-oss-20b
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   try { process.loadEnvFile(path.join(root, '.env')); } catch (error) { if (error.code !== 'ENOENT') throw error; }
-  const port = Number(process.env.PORT || 5173);
-  const server = createPortfolioServer({ apiKey: process.env.GROQ_API_KEY, model: process.env.GROQ_MODEL || 'openai/gpt-oss-20b', allowedOrigin: process.env.ALLOWED_ORIGIN || '' });
+  const config = serverConfig();
+  const server = createPortfolioServer(config);
   server.on('error', error => { console.error(error.code === 'EADDRINUSE' ? `Port ${port} is in use. Stop the old portfolio preview first.` : 'Preview could not start.'); process.exitCode = 1; });
-  server.listen(port, '127.0.0.1', () => console.log(`Portfolio: http://127.0.0.1:${port}/?motion=full\nSpidy: ${process.env.GROQ_API_KEY ? 'Groq enabled' : 'saved portfolio answers (add GROQ_API_KEY to .env for AI)'}`));
+  server.listen(config.port, config.host, () => console.log(`Portfolio: ${config.allowedOrigin || `http://127.0.0.1:${config.port}`}/?motion=full\nSpidy: ${config.apiKey ? 'Groq enabled' : 'saved portfolio answers (add GROQ_API_KEY to .env for AI)'}`));
 }

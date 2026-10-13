@@ -1,0 +1,9 @@
+.git
+.env
+.env.*
+info.txt
+node_modules
+assets/reveal
+tests
+scripts
+*.log
