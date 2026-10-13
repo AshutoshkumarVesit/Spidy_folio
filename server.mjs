@@ -62,11 +62,12 @@ export function serverConfig(env = process.env) {
   if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('PORT must be between 1 and 65535.');
   return {
     apiKey: env.GROQ_API_KEY || '', model: env.GROQ_MODEL || 'openai/gpt-oss-20b', allowedOrigin, port,
+    proxyHost: !!allowedOrigin && env.PROXY_HOST === 'true',
     host: env.HOST || (env.NODE_ENV === 'production' || allowedOrigin ? '0.0.0.0' : '127.0.0.1')
   };
 }
 
-export function createPortfolioServer({ apiKey = '', model = 'openai/gpt-oss-20b', fetchImpl = fetch, allowedOrigin = '', now = Date.now, rateLimit = 12 } = {}) {
+export function createPortfolioServer({ apiKey = '', model = 'openai/gpt-oss-20b', fetchImpl = fetch, allowedOrigin = '', proxyHost = false, now = Date.now, rateLimit = 12 } = {}) {
   const visitors = new Map();
   let windowStart = now(), globalCount = 0, day = Math.floor(now() / 86400000), dailyCount = 0, pending = 0;
   function limited(ip) {
@@ -83,6 +84,8 @@ export function createPortfolioServer({ apiKey = '', model = 'openai/gpt-oss-20b
   }
   const server = http.createServer(async (req, res) => {
     res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('X-Frame-Options', 'DENY');
+    if (allowedOrigin.startsWith('https://')) res.setHeader('Strict-Transport-Security', 'max-age=31536000');
     res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
     res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'");
     try {
@@ -91,7 +94,9 @@ export function createPortfolioServer({ apiKey = '', model = 'openai/gpt-oss-20b
       const ownOrigin = `http://${req.headers.host}`;
       const host = new URL(ownOrigin).hostname;
       const expected = allowedOrigin ? new URL(allowedOrigin).host : null;
-      if (expected ? req.headers.host !== expected : !['127.0.0.1', 'localhost', '[::1]'].includes(host)) return json(res, 403, { error: 'Host not allowed.' });
+      // Public reverse proxies may rewrite Host. The configured Origin still gates
+      // chat calls; forwarded headers never determine the trusted public address.
+      if (expected ? !proxyHost && req.headers.host !== expected : !['127.0.0.1', 'localhost', '[::1]'].includes(host)) return json(res, 403, { error: 'Host not allowed.' });
       const url = new URL(req.url, ownOrigin);
       if (url.pathname === '/api/chat/status' && req.method === 'GET') return json(res, 200, { mode: apiKey ? 'ai' : 'saved' });
       if (url.pathname === '/api/chat') {

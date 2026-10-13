@@ -31,7 +31,9 @@ node scripts/antideploy.mjs deploy
 node scripts/antideploy.mjs status <taskId>
 ```
 
-The helper archives only Git-tracked/staged files, refuses private planning files or `.env` in that manifest, and sends only the Groq configuration and production runtime settings as deployment environment variables. It reads the application's current public URL and sets `ALLOWED_ORIGIN` explicitly, so the server accepts that address even when the platform omits `APP_URL`. It does not upload the local preview port. Docker also excludes env files and private notes from its build context. Deployments use folder uploads; pushing GitHub alone does not redeploy this application.
+The helper archives only Git-tracked/staged files, refuses private planning files or `.env` in that manifest, and sends only the Groq configuration and production runtime settings as deployment environment variables. It reads the application's current public URL and sets `ALLOWED_ORIGIN` explicitly, so the server accepts that address even when the platform omits `APP_URL`. It enables `PROXY_HOST` because Antideploy rewrites the upstream Host; chat requests still require the configured public Origin, and forwarded headers are never trusted for origins or rate limits. It does not upload the local preview port. Docker also excludes env files and private notes from its build context. Deployments use folder uploads; pushing GitHub alone does not redeploy this application.
+
+Next session: visitor counts, error tracking, and an email contact form. Antideploy currently lists counts and error tracking as ideas; they need separate provider setup. Contact email can use its built-in relay. These are planned, not enabled.
 
 ## Checks
 

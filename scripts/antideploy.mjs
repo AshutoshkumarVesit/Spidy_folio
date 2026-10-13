@@ -66,7 +66,7 @@ try {
     execFileSync('tar', ['-czf', archive, '-C', root, '-T', fileList], { stdio: 'pipe' });
     const form = new FormData();
     form.append('archive', new Blob([await fs.readFile(archive)], { type: 'application/gzip' }), 'portfolio.tar.gz');
-    form.append('env', JSON.stringify({ GROQ_API_KEY: process.env.GROQ_API_KEY, GROQ_MODEL: process.env.GROQ_MODEL || 'openai/gpt-oss-20b', NODE_ENV: 'production', HOST: '0.0.0.0', ALLOWED_ORIGIN: publicOrigin }));
+    form.append('env', JSON.stringify({ GROQ_API_KEY: process.env.GROQ_API_KEY, GROQ_MODEL: process.env.GROQ_MODEL || 'openai/gpt-oss-20b', NODE_ENV: 'production', HOST: '0.0.0.0', ALLOWED_ORIGIN: publicOrigin, PROXY_HOST: 'true' }));
     const response = await fetch(`${base}/api/v1/deploy?applicationId=${applicationId}`, { method: 'POST', headers: { Authorization: `Bearer ${await token()}` }, body: form, signal: AbortSignal.timeout(120000) });
     const data = await response.json();
     if (!response.ok) throw new Error(`Deploy HTTP ${response.status}: ${data.error || data.code || 'request failed'}`);

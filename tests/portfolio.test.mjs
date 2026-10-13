@@ -36,6 +36,16 @@ test('HTTPS proxy requests retain host/origin restrictions and internal health p
     assert.equal((await fetch(origin)).status, 403);
     assert.equal((await fetch(`${origin}/healthz`)).status, 200);
   });
+  await withServer({ allowedOrigin: 'https://ashuverse.antideploy.app', proxyHost: true }, async origin => {
+    const page = await fetch(origin);
+    assert.equal(page.status, 200);
+    assert.equal(page.headers.get('x-frame-options'), 'DENY');
+    assert.equal(page.headers.get('strict-transport-security'), 'max-age=31536000');
+    assert.equal((await post(origin, { message: 'Explain SmartML' }, { Origin: 'https://ashuverse.antideploy.app' })).status, 200);
+    assert.equal((await post(origin, { message: 'hi' }, { Origin: 'https://evil.example', 'X-Forwarded-Host': 'ashuverse.antideploy.app' })).status, 403);
+    assert.equal((await fetch(`${origin}/api/chat`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: 'hi' }) })).status, 403);
+    assert.equal((await fetch(`${origin}/.env`)).status, 404);
+  });
 });
 
 test('rope constrains a held swing and release preserves velocity', () => {
