@@ -12,6 +12,7 @@ async function openGame(event) {
     game ||= createWebSwing(dialog);
     dialog.showModal();
     document.body.classList.add('play-modal');
+    document.querySelector('#play-web-swing').setAttribute('aria-expanded', 'true');
     document.dispatchEvent(new CustomEvent('portfolio:overlay', { detail: { active: true } }));
     game.open();
   } finally { opening = false; }
@@ -23,6 +24,7 @@ function closeGame() {
 dialog.addEventListener('close', () => {
   game?.stop();
   document.body.classList.remove('play-modal');
+  document.querySelector('#play-web-swing').setAttribute('aria-expanded', 'false');
   document.dispatchEvent(new CustomEvent('portfolio:overlay', { detail: { active: false } }));
   const target = opener?.closest('#spidy-panel') ? document.querySelector('#ask-spidy') : opener;
   target?.focus({ preventScroll: true });

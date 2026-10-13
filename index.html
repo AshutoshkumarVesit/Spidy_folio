@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Ashutosh Tripathi — Portfolio concept</title>
     <link rel="stylesheet" href="style.css?v=play-spidy-1" />
-    <link rel="stylesheet" href="play.css?v=2" />
+    <link rel="stylesheet" href="play.css?v=3" />
     <script type="module" src="reveal.js?v=soft-particles-2"></script>
     <script type="module" src="sections.js?v=motion-polish-1"></script>
     <script type="module" src="navigation.js?v=2"></script>
     <script type="module" src="spider-cursor.js?v=2"></script>
     <script type="module" src="motion-details.js?v=1"></script>
-    <script type="module" src="portfolio-play.js?v=5"></script>
+    <script type="module" src="portfolio-play.js?v=6"></script>
   </head>
   <body>
     <div id="cursor-spider" aria-hidden="true" hidden>
@@ -277,7 +277,10 @@
       <div class="game-stage"><canvas id="swing-canvas" tabindex="0" aria-label="Web Swing game area" aria-describedby="game-controls"></canvas><div class="game-overlay" id="game-overlay"><span class="game-overlay-mark" aria-hidden="true">↗</span><p class="play-kicker" id="game-overlay-kicker">30 SECONDS / THREE HEARTS</p><h3 id="game-overlay-title">THE CITY IS YOURS.</h3><p id="game-overlay-description">Score 1 point per forward meter + 10 per coin. Dodge the drones.<br />Hold to swing, release to fly.</p><button class="play-launch" id="game-start" type="button">LET’S SWING <span aria-hidden="true">↗</span></button></div></div>
       <footer class="game-footer"><p id="game-controls"><span class="game-mouse-control">HOLD MOUSE OR SPACE</span><span class="game-touch-control">TOUCH & HOLD</span> TO SWING · RELEASE TO FLY</p><button id="game-pause" type="button" disabled>PAUSE</button></footer><p id="game-status" class="sr-only" role="status"></p>
     </dialog>
-    <button class="spidy-launcher" id="ask-spidy" type="button" aria-haspopup="dialog" aria-controls="spidy-panel" aria-expanded="false" hidden><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#spidy-face"/></svg><span>ASK SPIDY</span><span class="spidy-launcher-dot" aria-hidden="true"></span></button>
+    <div class="portfolio-dock" role="group" aria-label="Portfolio shortcuts">
+      <button class="game-launcher" id="play-web-swing" type="button" data-open-game aria-label="Play Web Swing" aria-haspopup="dialog" aria-controls="web-swing-dialog" aria-expanded="false"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none"><path d="M11 10H21C24 10 25 12 26 16L28 23C29 27 25 28 23 25L20 22H12L9 25C7 28 3 27 4 23L6 16C7 12 8 10 11 10Z" stroke="currentColor" stroke-width="1.6"/><path d="M10 16H16M13 13V19M16 10V5L21 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="21" cy="15" r="1.3" fill="currentColor"/><circle cx="24" cy="18" r="1.3" fill="currentColor"/></svg><span class="game-launcher-label" aria-hidden="true">WEB SWING</span></button>
+      <button class="spidy-launcher" id="ask-spidy" type="button" aria-haspopup="dialog" aria-controls="spidy-panel" aria-expanded="false" hidden><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#spidy-face"/></svg><span>ASK SPIDY</span><span class="spidy-launcher-dot" aria-hidden="true"></span></button>
+    </div>
     <dialog class="spidy-panel" id="spidy-panel" aria-labelledby="spidy-title">
       <header class="spidy-header"><div class="spidy-avatar"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#spidy-face"/></svg></div><div><h2 id="spidy-title">SPIDY<span>.</span></h2><p id="spidy-mode">Portfolio guide</p></div><button class="play-close" id="spidy-close" type="button" aria-label="Close Spidy chat">×</button></header>
       <div class="spidy-messages" id="spidy-messages" role="log" aria-label="Chat with Spidy" aria-live="polite" aria-relevant="additions"></div>
