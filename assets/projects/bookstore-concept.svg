@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" fill="none">
+  <defs><linearGradient id="bg" x1="100" y1="120" x2="800" y2="660" gradientUnits="userSpaceOnUse"><stop stop-color="#30202a"/><stop offset="1" stop-color="#10151f"/></linearGradient><linearGradient id="book" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff715e"/><stop offset="1" stop-color="#af333e"/></linearGradient></defs>
+  <ellipse cx="448" cy="594" rx="348" ry="42" fill="#05070b" opacity=".5"/>
+  <rect x="68" y="108" width="764" height="470" rx="14" fill="url(#bg)" stroke="#66505a"/>
+  <path d="M68 151H832" stroke="#66505a"/><circle cx="91" cy="130" r="4" fill="#ff585d"/><circle cx="106" cy="130" r="4" fill="#a27b68"/><circle cx="121" cy="130" r="4" fill="#737e85"/>
+  <rect x="286" y="121" width="328" height="18" rx="9" fill="#191c25"/>
+  <text x="310" y="134" fill="#92828b" font-size="9" font-family="Arial">E-BOOK / CATALOG CONCEPT</text>
+  <text x="107" y="192" fill="#fff0e8" font-size="16" font-family="Arial" font-weight="700">THE BOOKSTORE</text><text x="638" y="192" fill="#ad9da5" font-size="10" font-family="Arial">CATALOG / ORDERS</text>
+  <path d="M107 216H793" stroke="#5c424d"/>
+  <text x="107" y="254" fill="#e5cfc5" font-size="11" font-family="Arial" letter-spacing="3">A SHELF OF POSSIBILITIES.</text>
+  <g transform="translate(107 281)"><rect width="147" height="180" rx="3" fill="url(#book)"/><path d="M13 0V180" stroke="#ffab89" opacity=".45"/><circle cx="80" cy="71" r="32" stroke="#ffe9bb" stroke-width="1.5"/><path d="M51 83L80 36L109 83Z" stroke="#ffe9bb"/><text x="26" y="143" fill="#ffe9bb" font-size="12" font-family="Arial" letter-spacing="3">EXPLORE</text></g>
+  <g transform="translate(277 281)"><rect width="147" height="180" rx="3" fill="#274452"/><path d="M13 0V180" stroke="#6e9aa1" opacity=".55"/><path d="M45 51H106M45 69H95M45 87H83" stroke="#b7c6b4" stroke-width="2"/><text x="26" y="143" fill="#d4dcc1" font-size="12" font-family="Arial" letter-spacing="3">CREATE</text></g>
+  <g transform="translate(447 281)"><rect width="147" height="180" rx="3" fill="#b49869"/><path d="M13 0V180" stroke="#e8c692" opacity=".6"/><path d="M54 39L106 67L54 96Z" stroke="#372e39" stroke-width="1.5"/><text x="26" y="143" fill="#372e39" font-size="12" font-family="Arial" letter-spacing="3">DISCOVER</text></g>
+  <rect x="622" y="281" width="170" height="226" rx="5" fill="#181923" stroke="#5d414d"/><text x="642" y="308" fill="#eee0db" font-size="12" font-family="Arial">PURCHASE FLOW</text>
+  <path d="M643 329H770" stroke="#523c47"/><g fill="#b9a7af" font-size="11" font-family="Arial"><text x="643" y="357">01 / Add to cart</text><text x="643" y="391">02 / Checkout</text><text x="643" y="425">03 / Track order</text></g>
+  <rect x="642" y="451" width="129" height="34" rx="3" fill="#ee494d"/><text x="661" y="472" fill="#fff0eb" font-size="9" font-family="Arial" letter-spacing="1">ORDER CONFIRMED</text>
+  <g stroke="#7d6873" stroke-linecap="round"><path d="M107 481H213M277 481H383M447 481H553" stroke-width="4"/><path d="M107 497H173M277 497H343M447 497H513" stroke-width="3" opacity=".45"/></g>
+  <text x="108" y="548" fill="#a9939e" font-size="10" font-family="Arial" letter-spacing="2">CUSTOMER EXPERIENCE ↔ ADMIN OPERATIONS</text>
+  <path d="M68 604H832" stroke="#ff585d" opacity=".4"/>
+</svg>

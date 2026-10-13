@@ -1,0 +1,104 @@
+/* Optional play and conversation share the portfolio's quiet red/web language. */
+.play-icon-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.play-kicker { font: 8px/1.8 monospace; letter-spacing: 1.6px; color: #bb8eaa; margin: 0 0 14px; }
+.swing-invitation { position: relative; display: grid; grid-template-columns: 1fr 1.1fr; align-items: center; gap: 30px; margin-top: 70px; padding: 42px 48px; border: 1px solid #4a3041; background: radial-gradient(ellipse at 80% 25%, #642f451c, transparent 65%); overflow: hidden; scroll-margin-top: 90px; }
+.swing-invitation::before { content: ''; position: absolute; left: -1px; top: -1px; width: 40px; height: 40px; border-top: 2px solid #ff626b; border-left: 2px solid #ff626b; pointer-events: none; }
+.swing-invitation h3 { margin: 0; font: 400 clamp(34px, 4vw, 62px)/.96 Impact, 'Arial Narrow', sans-serif; }
+.swing-invitation h3 span { color: #ff626b; }
+.swing-invitation-copy > p:not(.play-kicker) { color: #bca9b7; font-size: 12px; line-height: 1.8; margin: 20px 0; }
+.swing-invitation-art { width: 100%; max-height: 280px; }
+.invitation-spidy { transform-origin: 282px 161px; transition: translate .7s cubic-bezier(.16,1,.3,1); }
+.swing-invitation:hover .invitation-spidy { translate: 8px -9px; }
+.play-launch { padding: 15px 20px; color: #fff3ef; background: #e54555; border: 1px solid #f86472; font: 700 9px Arial, sans-serif; letter-spacing: 1.2px; cursor: pointer; transition: background .2s, box-shadow .2s; }
+.play-launch span { margin-left: 28px; font-size: 16px; }
+.play-launch:hover { background: #ff5363; box-shadow: 0 0 25px #ff454722; }
+:is(.play-launch,.play-close,#game-pause,.spidy-launcher,.spidy-panel button,.spidy-panel a,.spidy-panel textarea):focus-visible { outline: 2px solid #ff808c; outline-offset: 4px; }
+.game-dialog { width: min(1000px, calc(100% - 40px)); max-width: 1000px; max-height: calc(100dvh - 40px); padding: 26px; color: #f9eef3; border: 1px solid #604251; background: #121016; overflow: auto; }
+.game-dialog::backdrop { background: #050409df; backdrop-filter: blur(8px); }
+.game-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.game-header .play-kicker { margin-bottom: 7px; }
+.game-header h2 { margin: 0; font: 400 36px/.95 Impact, 'Arial Narrow', sans-serif; }
+.game-header h2 span { color: #ff626b; }
+.play-close { width: 36px; height: 36px; flex-shrink: 0; border: 1px solid #644552; background: transparent; color: #cbb1c1; font: 25px/1 Arial, sans-serif; cursor: pointer; }
+.play-close:hover { color: #fff4ef; border-color: #ff626b; }
+.game-hud { display: flex; align-items: center; gap: 32px; margin: 24px 0 15px; color: #9d7e93; font: 8px monospace; letter-spacing: 1px; }
+.game-hud strong { color: #f8e4ec; font: 500 18px monospace; margin-left: 8px; }
+.game-hud > span:last-child { margin-left: auto; }
+.game-hearts { font: 16px Arial, sans-serif; color: #ff6775; }
+.game-progress { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; margin: -3px 0 12px; color: #ae8ea4; font: 7px/1.8 monospace; letter-spacing: .6px; }
+.game-progress strong { color: #ffd599; font-weight: 500; margin-left: 6px; }
+.game-stage { position: relative; min-width: 0; border: 1px solid #342638; background: #171321; overflow: hidden; }
+#swing-canvas { position: relative; display: block; width: 100%; height: clamp(300px, 52dvh, 480px); opacity: 1; pointer-events: auto; touch-action: none; transition: none; }
+#swing-canvas:focus-visible { outline: 2px solid #ff808c; outline-offset: -3px; }
+.game-overlay { position: absolute; inset: 0; padding: 20px; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; background: #0d0b15b8; backdrop-filter: blur(3px); }
+.game-overlay[hidden] { display: none; }
+.game-ready-hint { position: absolute; bottom: 36px; left: 0; right: 0; margin: 0; color: #ffb8ca; text-align: center; font: 8px monospace; letter-spacing: 1px; pointer-events: none; }
+.game-ready-hint[hidden] { display: none; }
+.game-overlay-mark { font: 32px Arial, sans-serif; color: #ff7f8c; margin-bottom: 12px; }
+.game-overlay .play-kicker { margin-bottom: 8px; }
+.game-overlay h3 { margin: 0; font: 400 clamp(28px, 4vw, 52px)/1 Impact, 'Arial Narrow', sans-serif; }
+.game-overlay > p:not(.play-kicker) { font-size: 12px; line-height: 1.8; color: #c4aec2; margin: 16px 0 22px; }
+.game-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; }
+.game-footer p { margin: 0; color: #ae8ea4; font: 8px/1.8 monospace; letter-spacing: .6px; }
+#game-pause { border: 0; background: transparent; color: #ff7f8c; font: 700 9px Arial, sans-serif; padding: 8px; letter-spacing: 1px; cursor: pointer; }
+#game-pause:disabled { opacity: .35; cursor: default; }
+.game-touch-control { display: none; }
+body.play-modal { overflow: hidden; }
+body.play-modal :is(.glyph-drift,.spider-legs) { animation-play-state: paused !important; }
+body.play-modal .site-header { visibility: hidden; }
+.spidy-launcher { position: fixed; z-index: 70; right: max(20px, env(safe-area-inset-right)); bottom: max(20px, env(safe-area-inset-bottom)); display: flex; align-items: center; gap: 11px; border: 1px solid #6f4056; background: #160f1af0; color: #ff626b; padding: 10px 15px 10px 10px; border-radius: 40px; box-shadow: 0 8px 30px #0005; cursor: pointer; transition: border-color .3s, translate .3s; }
+.spidy-launcher[hidden] { display: none; }
+.spidy-launcher svg { width: 32px; height: 32px; }
+.spidy-launcher > span:not(.spidy-launcher-dot) { color: #ebcad8; font: 700 8px Arial, sans-serif; letter-spacing: 1px; }
+.spidy-launcher-dot { width: 4px; height: 4px; border-radius: 50%; background: #ff8a93; }
+.spidy-launcher:hover { border-color: #ff7b83; translate: 0 -3px; }
+.spidy-panel { position: fixed; inset: auto max(20px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) auto; width: min(390px, calc(100% - 32px)); max-width: none; height: min(630px, calc(100dvh - 95px)); max-height: calc(100dvh - 95px); padding: 0; margin: 0; z-index: 80; color: #f8edf3; border: 1px solid #784255; border-radius: 12px; background: #141017; box-shadow: 0 16px 80px #0008; overflow: hidden; }
+.spidy-panel[open] { display: flex; flex-direction: column; }
+.spidy-header { display: flex; align-items: center; gap: 12px; padding: 18px; border-bottom: 1px solid #392333; background: radial-gradient(ellipse at 0 0, #63233733, transparent 90%); }
+.spidy-avatar { color: #ff5969; }
+.spidy-avatar svg { display: block; width: 38px; height: 38px; }
+.spidy-header h2 { margin: 0; font: 400 26px/.95 Impact, 'Arial Narrow', sans-serif; letter-spacing: 1px; }
+.spidy-header h2 span { color: #ff626b; }
+.spidy-header p { margin: 6px 0 0; color: #ba92aa; font: 8px monospace; }
+.spidy-header .play-close { margin-left: auto; border: 0; }
+.spidy-messages { flex: 1; min-height: 80px; overflow-y: auto; overscroll-behavior: contain; padding: 20px 18px 4px; scrollbar-width: thin; scrollbar-color: #744056 transparent; }
+.spidy-message { margin: 0 0 20px; }
+.spidy-message-name { display: block; color: #bd8ca6; font: 7px monospace; letter-spacing: 1.2px; margin-bottom: 8px; }
+.spidy-message p { margin: 0; color: #dbbfce; font-size: 12px; line-height: 1.8; white-space: pre-wrap; overflow-wrap: anywhere; }
+.spidy-message.user { border-left: 2px solid #dd5368; padding: 10px 12px; background: #45243742; }
+.spidy-message.user p { color: #f2dce7; }
+.spidy-message.user .spidy-message-name { color: #ff8195; }
+.spidy-message small { display: block; margin-top: 8px; font: 7px/1.5 monospace; color: #a07993; }
+.spidy-message-actions { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; }
+.spidy-message-actions :is(a,button) { text-decoration: none; font: 8px Arial, sans-serif; color: #f2b5c5; border: 1px solid #6a354b; background: #46213222; padding: 8px 10px; cursor: pointer; }
+.spidy-suggestions { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 18px; }
+.spidy-suggestions[hidden] { display: none; }
+.spidy-suggestions button { padding: 7px 9px; color: #c0a0b5; border: 1px solid #4c3045; border-radius: 20px; background: transparent; font: 9px Arial, sans-serif; cursor: pointer; }
+.spidy-suggestions button:hover { border-color: #c0607a; color: #f4ccdf; }
+.spidy-status { flex-shrink: 0; margin: 0; padding: 0 18px; min-height: 18px; color: #ed93aa; font: 9px/1.7 Arial, sans-serif; }
+.spidy-form { display: flex; align-items: center; gap: 8px; margin: 0 16px; padding: 9px 11px; border: 1px solid #624052; border-radius: 7px; background: #221723; }
+.spidy-form textarea { display: block; min-width: 0; width: 100%; resize: none; padding: 0; background: transparent; border: 0; color: #ffeaf3; font: 12px/1.6 Arial, sans-serif; }
+.spidy-form textarea::placeholder { color: #a5839b; }
+.spidy-form textarea:focus { outline: none; }
+.spidy-form:focus-within { border-color: #e06581; }
+#spidy-send { width: 32px; height: 32px; flex-shrink: 0; background: #e74d66; border: 0; border-radius: 4px; color: white; font: 24px Arial, sans-serif; cursor: pointer; }
+#spidy-send:disabled { opacity: .4; cursor: default; }
+.spidy-footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 18px; }
+.spidy-footer span { color: #9c7890; font: 7px/1.6 Arial, sans-serif; }
+.spidy-footer button { padding: 5px 0; flex-shrink: 0; border: 0; background: transparent; color: #bf90a7; font: 7px monospace; cursor: pointer; }
+@media (max-width: 640px) {
+  .swing-invitation { margin-top: 44px; grid-template-columns: 1fr; gap: 5px; padding: 30px 24px 10px; }
+  .swing-invitation-art { max-height: 210px; }
+  .game-dialog { width: calc(100% - 16px); max-height: calc(100dvh - 16px); padding: 14px; }
+  .game-hud { gap: 12px; margin-top: 18px; font-size: 7px; }
+  .game-hud strong { font-size: 15px; margin-left: 4px; }
+  .game-hearts { font-size: 12px; }
+  .game-header h2 { font-size: 28px; }
+  .game-header .play-kicker { font-size: 6px; letter-spacing: 1px; }
+  .game-footer p { font-size: 6px; letter-spacing: 0; }
+  .spidy-panel { inset: auto 12px max(12px, env(safe-area-inset-bottom)) auto; width: calc(100% - 24px); height: min(620px, calc(100dvh - 80px)); }
+  .spidy-launcher { bottom: max(14px, env(safe-area-inset-bottom)); right: 14px; }
+}
+@media (pointer: coarse) { .game-touch-control { display: inline; } .game-mouse-control { display: none; } .spidy-form textarea { font-size: 16px; } }
+@media (prefers-reduced-motion: reduce) { .swing-invitation:hover .invitation-spidy { translate: none; } .spidy-launcher { transition: none; } }

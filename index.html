@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ashutosh Tripathi — Portfolio concept</title>
+    <link rel="stylesheet" href="style.css?v=play-spidy-1" />
+    <link rel="stylesheet" href="play.css?v=2" />
+    <script type="module" src="reveal.js?v=soft-particles-2"></script>
+    <script type="module" src="sections.js?v=motion-polish-1"></script>
+    <script type="module" src="navigation.js?v=2"></script>
+    <script type="module" src="spider-cursor.js?v=2"></script>
+    <script type="module" src="motion-details.js?v=1"></script>
+    <script type="module" src="portfolio-play.js?v=5"></script>
+  </head>
+  <body>
+    <div id="cursor-spider" aria-hidden="true" hidden>
+      <svg class="cursor-web" fill="none"><path class="cursor-web-thread" pathLength="1"/><circle class="cursor-web-anchor" r="2"/></svg>
+      <svg class="cursor-spider-body" viewBox="0 0 64 64" fill="none">
+        <g class="spider-legs spider-legs-a"><path d="M26 25L15 17L8 7M38 35L51 42L57 56"/></g>
+        <g class="spider-legs spider-legs-b"><path d="M38 25L49 17L56 7M26 35L13 42L7 56"/></g>
+        <g class="spider-legs spider-legs-c"><path d="M25 29L11 25L3 17M39 32L53 34L61 44"/></g>
+        <g class="spider-legs spider-legs-d"><path d="M39 29L53 25L61 17M25 32L11 34L3 44"/></g>
+        <ellipse class="spider-abdomen" cx="32" cy="40" rx="10" ry="13"/>
+        <path class="spider-mark" d="M32 31V48M27 35L37 44M37 35L27 44"/>
+        <ellipse class="spider-head" cx="32" cy="24" rx="9" ry="9"/>
+        <path class="spider-eye" d="M25 21L30 24L29 28Q24 27 25 21ZM39 21L34 24L35 28Q40 27 39 21Z"/>
+      </svg>
+    </div>
+    <a class="skip-link" href="#about">SKIP TO CONTENT</a>
+    <header class="site-header">
+      <a class="nav-brand" href="#home" aria-label="Ashutosh Tripathi — Home">AT<span aria-hidden="true">.</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden><span class="nav-toggle-label">MENU</span><span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span></span></button>
+      <nav id="site-nav" aria-label="Main navigation"><a href="#home" data-nav-link aria-current="location">Home</a><a href="#about" data-nav-link>About</a><a href="#projects" data-nav-link>Projects</a><a href="#skills" data-nav-link>Skills</a><a href="#contact" data-nav-link>Contact</a></nav>
+    </header>
+    <main>
+    <div class="hero-stage" id="home" tabindex="-1">
+    <section id="scene" tabindex="0" aria-label="Interactive Spider-Man image. Move your pointer or drag horizontally to shift nearby triangles and glimpse Ashutosh behind them. Press Space to nudge the central particles.">
+      <div class="hero-art">
+      <img class="front" src="assets/portraits/spiderman.png" alt="Spider-Man above a city at sunset" />
+      <img class="back" src="assets/portraits/ashutosh.png" alt="" hidden />
+      <canvas aria-hidden="true"></canvas>
+      </div>
+      <div class="shade" aria-hidden="true"></div>
+      <div class="scene-fade" aria-hidden="true"></div>
+      <svg class="transition-web" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
+        <path class="web-rays" pathLength="1" d="M800 430L-100 -80M800 430L430 -150M800 430L1050 -150M800 430L1700 30M800 430L1740 540M800 430L1400 1150M800 430L800 1200M800 430L250 1150M800 430L-100 670M800 430L-100 260" />
+        <path class="web-inner" pathLength="1" d="M600 320Q687 340 717 280Q800 330 860 290Q880 368 970 354Q924 431 992 453Q901 469 935 531Q858 515 800 584Q733 511 689 565Q692 482 614 479Q681 418 611 382Q672 373 600 320Z" />
+        <path class="web-outer" pathLength="1" d="M388 191Q584 267 618 114Q802 229 932 123Q967 279 1165 266Q1059 433 1216 480Q1018 516 1093 650Q925 615 800 766Q654 608 559 724Q566 544 397 536Q542 403 390 325Q523 306 388 191Z" />
+        <path class="web-accent" pathLength="1" d="M60 20Q429 164 493 -123Q840 94 1084 -105Q1150 188 1522 164Q1323 478 1618 566Q1246 634 1387 887Q1071 821 836 1105Q561 807 383 1025Q396 687 78 672Q351 422 65 275Q315 239 60 20Z" />
+        <path class="web-tracer" pathLength="1" d="M430 -150L800 430L1400 1150" />
+        <g class="web-junctions"><circle cx="800" cy="430" r="4"/><circle cx="717" cy="280" r="2"/><circle cx="970" cy="354" r="2"/><circle cx="689" cy="565" r="2"/><circle cx="935" cy="531" r="2"/></g>
+        <g class="web-fragments"><path d="M656 315L704 329L676 366Z"/><path d="M909 307L954 344L899 351Z"/><path d="M866 552L909 589L851 603Z"/><path d="M664 531L707 549L677 591Z"/></g>
+      </svg>
+      <section class="hero-copy" aria-labelledby="hero-title">
+        <p class="eyebrow"><span class="red-line" aria-hidden="true"></span> THE PERSON BEHIND THE CODE</p>
+        <h1 id="hero-title">ASHUTOSH<br /><span>TRIPATHI</span><span class="title-period">.</span></h1>
+        <p class="role">Software developer. Problem solver.</p>
+        <p class="intro">Building web, Android and AI-powered experiences<br class="desktop-break" /> that work in the real world.</p>
+        <div class="hero-links">
+          <a class="primary-link" href="#projects">EXPLORE MY WORK <span aria-hidden="true">↓</span></a>
+          <a class="contact-link" href="mailto:ashutosh14042006@gmail.com">LET’S TALK <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+      <footer class="scene-footer">
+        <p class="location"><span class="status-dot" aria-hidden="true"></span> MUMBAI, INDIA</p>
+        <p class="interaction-hint"><span class="hint-icon" aria-hidden="true">↔</span><span class="mouse-hint">MOVE YOUR CURSOR. SET THE PIECES IN MOTION.</span><span class="touch-hint">DRAG TO MOVE THE PIECES.</span></p>
+        <p class="specialties">JAVA <span>/</span> ANDROID <span>/</span> AI &amp; ML</p>
+        <a class="scroll-cue" href="#about">SCROLL TO ABOUT <span aria-hidden="true">↓</span></a>
+      </footer>
+    </section>
+    </div>
+    <section class="about-section" id="about" aria-labelledby="about-title">
+      <svg class="about-cutline" viewBox="0 0 1000 200" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M0 200L1000 0" /></svg>
+      <div class="about-thread" aria-hidden="true"><span></span></div>
+      <div class="about-inner">
+        <header class="about-header" data-reveal>
+          <p class="eyebrow"><span class="section-number">01</span><span class="red-line" aria-hidden="true"></span> ABOUT ME</p>
+          <p class="about-header-note">THE PERSON BEHIND THE PROJECTS</p>
+        </header>
+        <div class="about-grid">
+          <figure class="about-portrait" data-reveal>
+            <svg class="portrait-web" viewBox="0 0 600 600" fill="none" aria-hidden="true">
+              <path d="M300 35V565M35 300H565M112 112L488 488M112 488L488 112M195 53L405 547M53 195L547 405M195 547L405 53M53 405L547 195" />
+              <path d="M300 90Q330 146 381 105Q369 170 448 152Q417 216 495 219Q444 257 510 300Q454 330 495 381Q430 369 448 448Q384 417 381 495Q343 444 300 510Q270 454 219 495Q231 430 152 448Q183 384 105 381Q156 343 90 300Q146 270 105 219Q170 231 152 152Q216 183 219 105Q257 156 300 90Z" />
+              <path d="M300 152Q321 190 357 163Q349 208 405 195Q383 239 437 243Q402 270 448 300Q410 321 437 357Q392 349 405 405Q361 383 357 437Q330 402 300 448Q279 410 243 437Q251 392 195 405Q217 361 163 357Q198 330 152 300Q190 279 163 243Q208 251 195 195Q239 217 243 163Q270 198 300 152Z" />
+            </svg>
+            <div class="portrait-frame" aria-hidden="true"></div>
+            <span class="portrait-index" aria-hidden="true">AT / 01</span>
+            <img src="assets/portraits/ashutosh.png" alt="Illustrated Ashutosh in a suit, holding up a peace sign" loading="lazy" decoding="async" />
+            <figcaption><span>ASHUTOSH TRIPATHI</span><span>MUMBAI, INDIA <span class="caption-dot" aria-hidden="true"></span></span></figcaption>
+          </figure>
+          <div class="about-copy">
+            <h2 id="about-title" data-reveal>BEHIND<br />THE <span>MASK.</span></h2>
+            <p class="about-lead" data-reveal>A developer with a curiosity<br class="desktop-break" /> for how things work.</p>
+            <p class="about-description" data-reveal>I’m Ashutosh, a Computer Engineering student at VESIT, Mumbai. I build web, Android and machine learning applications with Java and Python, exploring clean architecture, offline support and practical uses of AI.</p>
+            <div class="about-actions" data-reveal><a class="resume-link" href="assets/documents/Ashutosh_Tripathi_Resume.pdf" download="Ashutosh_Tripathi_Resume.pdf">DOWNLOAD RESUME <span class="resume-format">PDF</span><span aria-hidden="true">↓</span></a></div>
+            <div class="about-highlights" data-reveal>
+              <div class="about-highlight"><span class="highlight-number">01 / CRAFT</span><h3>Java &amp; Android</h3><p>Core development focus</p></div>
+              <div class="about-highlight"><span class="highlight-number">02 / PROJECTS</span><h3>Built for a client</h3><p>E-Book Management System</p></div>
+              <div class="about-highlight"><span class="highlight-number">03 / EDUCATION</span><h3>Class of 2027</h3><p>Computer Engineering · VESIT</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="about-bottom-rule" aria-hidden="true"><span></span></div>
+        <a class="work-cue" href="#projects">NEXT / SELECTED WORK <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+    <section class="projects-section" id="projects" aria-labelledby="projects-title">
+      <svg class="work-handoff" viewBox="0 0 1600 560" preserveAspectRatio="none" fill="none" aria-hidden="true">
+        <g class="handoff-strands">
+          <path pathLength="1" d="M-80 36Q410 180 1170 326L1690 548" />
+          <path pathLength="1" d="M180 -70Q625 166 1170 326L1490 650" />
+          <path pathLength="1" d="M630 -90Q802 194 1170 326L1090 650" />
+          <path pathLength="1" d="M1690 64Q1410 226 1170 326L200 630" />
+          <path pathLength="1" d="M1500 -80Q1306 203 1170 326L-100 384" />
+          <path pathLength="1" d="M-60 190Q543 250 1170 326L1710 351" />
+        </g>
+        <g class="handoff-crossings">
+          <path pathLength="1" d="M271 157Q383 309 502 119Q528 303 784 165Q780 296 989 156Q1039 227 1306 172" />
+          <path pathLength="1" d="M573 231Q694 309 750 211Q770 307 947 250Q931 303 1077 232Q1102 279 1239 266" />
+          <path pathLength="1" d="M-30 420Q314 351 470 540Q527 346 986 604Q1089 402 1440 477Q1437 363 1690 387" />
+        </g>
+        <g class="handoff-detail"><path pathLength="1" d="M790 170Q812 288 940 243Q933 310 1075 286Q1092 325 1170 326Q1235 350 1290 410"/><path pathLength="1" d="M520 306Q737 293 845 409Q969 310 1070 451Q1140 370 1255 445"/><path pathLength="1" d="M1129 285L1208 326L1170 367L1129 285Z"/></g>
+        <path class="handoff-tracer" pathLength="1" d="M-80 36Q410 180 1170 326L1690 548"/>
+        <circle class="handoff-node" cx="1170" cy="326" r="5" />
+      </svg>
+      <div class="work-inner">
+        <header class="work-header">
+          <p class="eyebrow"><span class="section-number">02</span><span class="red-line" aria-hidden="true"></span> SELECTED PROJECTS</p>
+          <div class="work-heading-row"><h2 id="projects-title">BUILT, NOT JUST<br /><span>IMAGINED.</span></h2><p>Client work, mobile apps<br />and ideas powered by AI.<a class="collection-cue" href="#more-projects">VIEW MORE PROJECTS <span aria-hidden="true">↓</span></a></p></div>
+        </header>
+        <div class="project-layout">
+          <figure class="project-stage" aria-label="Illustrative concept previews for the E-Book Management System and MoveMate">
+            <div class="project-stage-grid" aria-hidden="true"></div>
+            <span class="stage-index" aria-hidden="true">FIELD NOTES / 01 — 02</span>
+            <div class="project-visuals" aria-hidden="true">
+              <img class="project-visual project-visual-book" src="assets/projects/bookstore-concept.svg" alt="" />
+              <img class="project-visual project-visual-move" src="assets/projects/movemate-concept.svg" alt="" />
+            </div>
+            <figcaption><span>CONCEPT PREVIEWS · SCREENSHOTS COMING SOON</span><span class="stage-count" aria-hidden="true"><b class="book-count">01</b><b class="move-count">02</b> / 02</span></figcaption>
+            <div class="stage-progress" aria-hidden="true"><span></span></div>
+          </figure>
+          <div class="project-stories">
+            <article class="project-story" id="project-bookstore" aria-labelledby="bookstore-title">
+              <figure class="project-inline-preview"><img src="assets/projects/bookstore-concept.svg" alt="Illustrative bookstore concept with a book catalog and purchase workflow" loading="lazy" /><figcaption>CONCEPT PREVIEW · SCREENSHOT COMING SOON</figcaption></figure>
+              <div class="project-detail">
+                <p class="project-kicker"><span>01 / WEB APPLICATION</span><span class="project-status">CLIENT PROJECT</span></p>
+                <h3 id="bookstore-title">E-BOOK<br />MANAGEMENT<br /><span>SYSTEM.</span></h3>
+                <p class="project-summary">A bookstore built for a real client, connecting the customer’s purchase journey with everyday inventory and order management.</p>
+                <ul class="project-contributions"><li>Cart, checkout, order tracking and email confirmations.</li><li>Separate customer and admin access, with stock monitoring.</li><li>MySQL persistence with a modular DAO architecture.</li></ul>
+                <ul class="project-tech" aria-label="E-Book project technologies"><li>Java</li><li>JSP / Servlets</li><li>MySQL</li><li>Cloudinary</li></ul>
+                <a class="project-link" href="https://github.com/AshutoshkumarVesit/Book_Store" target="_blank" rel="noopener noreferrer">VIEW E-BOOK SOURCE <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+            <article class="project-story" id="project-movemate" aria-labelledby="movemate-title">
+              <figure class="project-inline-preview"><img src="assets/projects/movemate-concept.svg" alt="Illustrative MoveMate phone concept showing run tracking, goals and offline-to-cloud synchronization" loading="lazy" /><figcaption>CONCEPT PREVIEW · SCREENSHOT COMING SOON</figcaption></figure>
+              <div class="project-detail">
+                <p class="project-kicker"><span>02 / ANDROID APPLICATION</span><span class="project-status">OFFLINE + CLOUD</span></p>
+                <h3 id="movemate-title">MOVE<br /><span>MATE.</span></h3>
+                <p class="project-summary">A fitness companion for logging runs, following personal progress and staying connected—even when the connection drops.</p>
+                <ul class="project-contributions"><li>SQLite run logging with Firebase Firestore cloud sync.</li><li>Distance, pace, personal bests and goal progress dashboards.</li><li>Community leaderboards and WorkManager reminders.</li></ul>
+                <ul class="project-tech" aria-label="MoveMate project technologies"><li>Java</li><li>Android</li><li>SQLite</li><li>Firebase</li></ul>
+                <a class="project-link" href="https://github.com/AshutoshkumarVesit/Movemate" target="_blank" rel="noopener noreferrer">VIEW MOVEMATE SOURCE <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+          </div>
+        </div>
+        <section class="project-collection" id="more-projects" aria-labelledby="collection-title">
+          <header class="collection-header"><div><p class="eyebrow"><span class="red-line" aria-hidden="true"></span> MORE TO EXPLORE</p><h3 id="collection-title">MORE IDEAS.<br /><span>MADE REAL.</span></h3></div><p>Exploring data, learning<br />and a little less waste.</p></header>
+          <div class="project-card-grid">
+            <article class="project-card" aria-labelledby="smartml-title" data-reveal>
+              <p class="card-index"><span>03 / DATA &amp; MACHINE LEARNING</span><span aria-hidden="true">↗</span></p>
+              <svg class="card-art art-data" viewBox="0 0 360 180" fill="none" aria-hidden="true"><path class="art-grid" d="M35 30V150H330M35 110H330M35 70H330M100 30V150M165 30V150M230 30V150M295 30V150"/><path class="art-route" d="M45 134L99 106L157 113L215 69L271 78L321 35"/><g class="art-points"><circle cx="45" cy="134" r="4"/><circle cx="99" cy="106" r="4"/><circle cx="157" cy="113" r="4"/><circle cx="215" cy="69" r="4"/><circle cx="271" cy="78" r="4"/><circle cx="321" cy="35" r="4"/></g></svg>
+              <h4 id="smartml-title">SmartML<span>.</span></h4>
+              <p class="card-summary">From a CSV dataset to clearer insights. An interactive dashboard for exploring data, training models and comparing algorithms.</p>
+              <p class="card-focus">Visualization · Model evaluation · Clustering</p>
+              <ul class="project-tech" aria-label="SmartML technologies"><li>Python</li><li>Flask</li><li>scikit-learn</li><li>Plotly</li></ul>
+              <div class="card-links"><a class="project-link" href="https://github.com/AshutoshkumarVesit/SmartML" target="_blank" rel="noopener noreferrer">SMARTML SOURCE <span aria-hidden="true">↗</span></a></div>
+            </article>
+            <article class="project-card" aria-labelledby="quizcraft-title" data-reveal>
+              <p class="card-index"><span>04 / AI &amp; LEARNING</span><span aria-hidden="true">↗</span></p>
+              <svg class="card-art art-quiz" viewBox="0 0 360 180" fill="none" aria-hidden="true"><g class="art-back-card"><rect x="105" y="21" width="160" height="128" rx="9" transform="rotate(10 185 85)"/></g><g class="art-front-card"><rect x="88" y="28" width="160" height="128" rx="9"/><path d="M112 56H187M112 71H215M112 86H169"/><circle cx="208" cy="122" r="14"/><path class="art-check" d="M201 122L206 127L216 117"/></g></svg>
+              <h4 id="quizcraft-title">QuizCraft<span>.</span></h4>
+              <p class="card-summary">Turn study material into flashcards and interactive quizzes, with Gemini-powered generation and feedback on your answers.</p>
+              <p class="card-focus">Text &amp; PDF input · OCR · Audio transcription</p>
+              <ul class="project-tech" aria-label="QuizCraft technologies"><li>Flask</li><li>Gemini</li><li>SQLite</li><li>Whisper</li></ul>
+              <div class="card-links"><a class="project-link" href="https://github.com/AshutoshkumarVesit/QuizCraft" target="_blank" rel="noopener noreferrer">QUIZCRAFT SOURCE <span aria-hidden="true">↗</span></a><a class="card-video" href="https://youtu.be/U5VrUPWq-Vc" target="_blank" rel="noopener noreferrer">WATCH WALKTHROUGH <span aria-hidden="true">↗</span></a></div>
+            </article>
+            <article class="project-card" aria-labelledby="smartsurplus-title" data-reveal>
+              <p class="card-index"><span>05 / ML &amp; REDISTRIBUTION</span><span aria-hidden="true">↗</span></p>
+              <svg class="card-art art-surplus" viewBox="0 0 360 180" fill="none" aria-hidden="true"><circle class="art-orbit" cx="180" cy="90" r="66"/><path class="art-route" d="M72 113L180 64L287 115M180 64V144"/><g class="art-hubs"><circle cx="72" cy="113" r="17"/><circle cx="180" cy="64" r="24"/><circle cx="287" cy="115" r="17"/><circle cx="180" cy="144" r="12"/></g><path class="art-leaf" d="M172 72Q162 46 196 49Q193 76 172 72ZM172 72L188 57"/></svg>
+              <h4 id="smartsurplus-title">SmartSurplus<span>.</span></h4>
+              <p class="card-summary">Predict food surplus and connect providers with nearby NGOs, matching by distance, urgency and available capacity.</p>
+              <p class="card-focus">FastAPI prototype · In-memory demo data</p>
+              <ul class="project-tech" aria-label="SmartSurplus technologies"><li>Python</li><li>FastAPI</li><li>scikit-learn</li><li>Pydantic</li></ul>
+              <div class="card-links"><a class="project-link" href="https://github.com/AshutoshkumarVesit/SmartSurplus" target="_blank" rel="noopener noreferrer">SMARTSURPLUS SOURCE <span aria-hidden="true">↗</span></a></div>
+            </article>
+          </div>
+        </section>
+        <footer class="work-footer"><p>MORE EXPERIMENTS. MORE TO BUILD.</p><a href="https://github.com/AshutoshkumarVesit/" target="_blank" rel="noopener noreferrer">EXPLORE GITHUB <span aria-hidden="true">↗</span></a><a href="#skills">NEXT / MY TOOLKIT <span aria-hidden="true">↓</span></a></footer>
+      </div>
+    </section>
+    <section class="skills-section" id="skills" aria-labelledby="skills-title" data-active-skill="web">
+      <svg class="toolkit-handoff" viewBox="0 0 1200 320" preserveAspectRatio="none" fill="none" aria-hidden="true"><path pathLength="1" d="M1135 0C1135 160 130 20 130 210L130 320"/><path pathLength="1" d="M1100 0C1100 190 165 50 165 210L165 320"/><g class="chapter-weave"><path pathLength="1" d="M915 86Q843 173 758 130Q657 90 560 137Q409 178 342 139Q254 105 185 157"/><path pathLength="1" d="M1064 113Q931 219 804 158Q671 94 515 182Q369 243 234 179"/></g><path class="chapter-tracer" pathLength="1" d="M1135 0C1135 160 130 20 130 210L130 320"/></svg>
+      <div class="toolkit-inner">
+        <header class="toolkit-header" data-reveal>
+          <p class="eyebrow"><span class="section-number">03</span><span class="red-line" aria-hidden="true"></span> MY TOOLKIT</p>
+          <div class="toolkit-heading-row"><h2 id="skills-title">THE TOOLS.<br /><span>BEHIND THE WORK.</span></h2><p>Learning by building.<br />Connecting ideas with code.</p></div>
+        </header>
+        <div class="toolkit-layout">
+          <div class="skill-map" aria-hidden="true">
+            <span class="map-index">AT / CONNECTED BY CURIOSITY</span>
+            <svg class="toolkit-web" viewBox="0 0 600 600" fill="none">
+              <g class="toolkit-web-weave"><path pathLength="1" d="M300 75V525M75 300H525M141 141L459 459M141 459L459 141"/><path pathLength="1" d="M300 75Q333 165 459 141Q430 250 525 300Q429 335 459 459Q350 430 300 525Q267 429 141 459Q170 350 75 300Q171 265 141 141Q250 170 300 75Z"/><path pathLength="1" d="M300 132Q325 199 419 181Q397 262 468 300Q396 326 419 419Q338 397 300 468Q275 396 181 419Q203 338 132 300Q204 274 181 181Q262 203 300 132Z"/><path pathLength="1" d="M300 192Q316 235 376 224Q362 276 408 300Q362 317 376 376Q324 362 300 408Q284 362 224 376Q238 324 192 300Q238 283 224 224Q276 238 300 192Z"/></g>
+              <g class="map-route" data-map-route="web"><path d="M300 300L141 141"/><circle cx="141" cy="141" r="6"/></g>
+              <g class="map-route" data-map-route="mobile"><path d="M300 300L459 141"/><circle cx="459" cy="141" r="6"/></g>
+              <g class="map-route" data-map-route="ai"><path d="M300 300L459 459"/><circle cx="459" cy="459" r="6"/></g>
+              <g class="map-route" data-map-route="data"><path d="M300 300L141 459"/><circle cx="141" cy="459" r="6"/></g>
+            </svg>
+            <div class="map-core"><span>BUILD WITH</span><strong id="map-focus">JAVA</strong><span class="map-core-dot"></span></div>
+            <span class="map-label map-label-web">JAVA<span>01 / WEB</span></span>
+            <span class="map-label map-label-mobile">ANDROID<span>02 / MOBILE</span></span>
+            <span class="map-label map-label-ai">PYTHON<span>03 / AI &amp; ML</span></span>
+            <span class="map-label map-label-data">SQL<span>04 / DATA</span></span>
+            <span class="map-caption">DIFFERENT TOOLS. CONNECTED IDEAS.</span>
+          </div>
+          <div class="toolkit-capabilities" data-reveal>
+            <p class="toolkit-instruction">SELECT A SKILL TO EXPLORE IT <span aria-hidden="true">↙</span></p>
+            <div class="skill-options" role="group" aria-label="Explore skill groups">
+              <button class="skill-option" type="button" data-skill="web" aria-pressed="true" aria-controls="skill-proof"><span class="skill-option-index">01</span><span><strong>Web &amp; Backend</strong><span class="skill-stack">Java · JSP / Servlets · Flask · FastAPI</span></span><span class="skill-option-arrow" aria-hidden="true">↗</span></button>
+              <button class="skill-option" type="button" data-skill="mobile" aria-pressed="false" aria-controls="skill-proof"><span class="skill-option-index">02</span><span><strong>Android Development</strong><span class="skill-stack">Java · Android · Firebase · WorkManager</span></span><span class="skill-option-arrow" aria-hidden="true">↗</span></button>
+              <button class="skill-option" type="button" data-skill="ai" aria-pressed="false" aria-controls="skill-proof"><span class="skill-option-index">03</span><span><strong>AI &amp; Machine Learning</strong><span class="skill-stack">Python · scikit-learn · pandas · Gemini</span></span><span class="skill-option-arrow" aria-hidden="true">↗</span></button>
+              <button class="skill-option" type="button" data-skill="data" aria-pressed="false" aria-controls="skill-proof"><span class="skill-option-index">04</span><span><strong>Data &amp; Foundations</strong><span class="skill-stack">MySQL · SQLite · DSA · REST APIs · Git</span></span><span class="skill-option-arrow" aria-hidden="true">↗</span></button>
+            </div>
+            <div class="skill-proof" id="skill-proof" aria-live="polite" aria-atomic="true"><p class="proof-label">IN PRACTICE / <span id="skill-proof-name">E-Book Management System</span></p><p id="skill-proof-description">Connecting a book catalog, purchase workflow and admin tools with Java and MySQL.</p><a id="skill-proof-link" href="#project-bookstore">EXPLORE THE PROJECT <span aria-hidden="true">↗</span></a></div>
+          </div>
+        </div>
+        <div class="toolkit-foundations" data-reveal><p>ALSO IN THE TOOLKIT</p><ul aria-label="Additional tools and foundations"><li>Docker</li><li>Kubernetes</li><li>Object-Oriented Programming</li><li>DBMS</li><li>Operating Systems</li><li>Computer Networks</li><li>Figma</li><li>Canva</li></ul></div>
+        <aside class="swing-invitation" id="web-swing" aria-labelledby="swing-invitation-title" data-reveal>
+          <div class="swing-invitation-copy"><p class="play-kicker">A LITTLE DETOUR / 30 SECONDS</p><h3 id="swing-invitation-title">YOUR TURN.<br /><span>TAKE A SWING.</span></h3><p>A skyline, a few webs, and a little momentum.<br />How far can you go?</p><button class="play-launch" type="button" data-open-game>PLAY WEB SWING <span aria-hidden="true">↗</span></button></div>
+          <svg class="swing-invitation-art" viewBox="0 0 600 300" fill="none" aria-hidden="true"><defs><linearGradient id="swing-city-fade" x2="0" y2="1"><stop stop-color="#29202f"/><stop offset="1" stop-color="#100d13"/></linearGradient></defs><g fill="url(#swing-city-fade)" stroke="#4b3549" stroke-width=".7"><path d="M0 300V140H55V300M64 300V80H113V300M123 300V168H174V300M183 300V112H242V300M254 300V188H314V300M327 300V132H386V300M400 300V90H456V300M470 300V170H519V300M533 300V126H600V300"/></g><path stroke="#87617b" stroke-width=".7" stroke-dasharray="3 8" d="M22 218Q194 82 340 182T590 82"/><path class="invitation-rope" stroke="#efd3df" d="M405 28L282 161"/><circle cx="405" cy="28" r="4" fill="#ff626b"/><g class="invitation-spidy" transform="translate(282 161) rotate(-32)"><path d="M-6 3L-20 21L-13 35M6 3L20 21L13 35M-6 -5L-20 -22M6 -5L23 -33" stroke="#ff626b" stroke-width="6" stroke-linecap="round"/><ellipse cy="8" rx="9" ry="15" fill="#263e6d"/><ellipse cy="-9" rx="11" ry="13" fill="#ff535e"/><path d="M-8 -12L-2 -8L-3 -5L-7 -7ZM8 -12L2 -8L3 -5L7 -7Z" fill="#fff6eb"/></g><g stroke="#f2bd81" stroke-width="1.5"><path d="M180 114L188 124L180 134L172 124Z"/><path d="M476 139L484 149L476 159L468 149Z"/></g><text x="400" y="270" fill="#94768b" font-family="monospace" font-size="8" letter-spacing="2">HOLD. SWING. RELEASE.</text></svg>
+        </aside>
+        <a class="work-cue" href="#contact">NEXT / LET’S CONNECT <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <svg class="contact-handoff" viewBox="0 0 1400 300" preserveAspectRatio="none" fill="none" aria-hidden="true"><path pathLength="1" d="M150 0C150 160 1210 50 1210 260L1210 300"/><path pathLength="1" d="M180 0C180 200 1240 75 1240 260L1240 300"/><g class="chapter-weave"><path pathLength="1" d="M348 101Q439 178 555 143Q663 109 803 177Q929 221 1046 175"/><path pathLength="1" d="M285 136Q429 240 590 175Q705 140 877 214Q1021 269 1163 226"/></g><path class="chapter-tracer" pathLength="1" d="M150 0C150 160 1210 50 1210 260L1210 300"/></svg>
+      <div class="contact-inner">
+        <header class="contact-header" data-reveal><p class="eyebrow"><span class="section-number">04</span><span class="red-line" aria-hidden="true"></span> LET’S CONNECT</p><p>MUMBAI, INDIA / CONNECT FROM ANYWHERE</p></header>
+        <div class="contact-layout">
+          <div class="contact-copy" data-reveal>
+            <h2 id="contact-title">LET’S BUILD<br /><span>SOMETHING.</span></h2>
+            <p class="contact-intro">Have an idea, a question or an opportunity?<br />I’d love to hear from you.</p>
+            <div class="contact-actions"><a class="contact-hello" href="mailto:ashutosh14042006@gmail.com">SAY HELLO <span aria-hidden="true">↗</span></a><a class="resume-link" href="assets/documents/Ashutosh_Tripathi_Resume.pdf" download="Ashutosh_Tripathi_Resume.pdf">DOWNLOAD RESUME <span class="resume-format">PDF</span><span aria-hidden="true">↓</span></a></div>
+          </div>
+          <div class="contact-signature" aria-hidden="true">
+            <svg class="contact-web" viewBox="0 0 600 600" fill="none"><g><path pathLength="1" d="M300 300L20 20M300 300L580 20M300 300L580 580M300 300L20 580M300 300V0M300 300H600M300 300V600M300 300H0"/><path pathLength="1" d="M300 92Q326 173 447 153Q427 263 508 300Q427 326 447 447Q337 427 300 508Q274 427 153 447Q173 337 92 300Q173 274 153 153Q263 173 300 92Z"/><path pathLength="1" d="M300 167Q317 219 394 206Q381 276 433 300Q381 317 394 394Q324 381 300 433Q283 381 206 394Q219 324 167 300Q219 283 206 206Q276 219 300 167Z"/></g><path class="signature-accent" pathLength="1" d="M20 20L300 300L580 580"/></svg>
+            <div class="signature-mark">AT<span>.</span></div>
+            <span class="signature-caption">AN IDEA IS A GOOD PLACE TO START.</span>
+          </div>
+        </div>
+        <div class="contact-channels" data-reveal>
+          <div class="contact-email"><p class="channel-label">01 / EMAIL</p><a id="contact-email-link" href="mailto:ashutosh14042006@gmail.com">ashutosh14042006@gmail.com</a><div class="email-copy-row"><button id="copy-email" type="button" hidden>COPY EMAIL <span aria-hidden="true">⧉</span></button><span id="copy-email-status" role="status"></span></div></div>
+          <a class="contact-social" href="https://github.com/AshutoshkumarVesit/" target="_blank" rel="noopener noreferrer"><span class="channel-label">02 / CODE &amp; EXPERIMENTS</span><span>GitHub <span aria-hidden="true">↗</span></span></a>
+          <a class="contact-social" href="https://www.linkedin.com/in/ashutoshkumar-tripathi/" target="_blank" rel="noopener noreferrer"><span class="channel-label">03 / FIND ME ONLINE</span><span>LinkedIn <span aria-hidden="true">↗</span></span></a>
+        </div>
+        <footer class="portfolio-footer"><p>© 2026 ASHUTOSH TRIPATHI</p><span>BUILT WITH CURIOSITY.</span><a href="#home">BACK TO TOP <span aria-hidden="true">↑</span></a></footer>
+      </div>
+    </section>
+    </main>
+    <svg class="play-icon-defs" aria-hidden="true"><defs><symbol id="spidy-face" viewBox="0 0 64 64"><path d="M32 5C13 5 8 20 13 39C16 51 26 59 32 60C38 59 48 51 51 39C56 20 51 5 32 5Z" fill="currentColor"/><g fill="none" stroke="#260d18" stroke-width="1.2" opacity=".65"><path d="M32 6V59M10 26H54M14 40H50M16 13L48 48M48 13L16 48M20 9Q32 24 44 9M12 19Q32 35 52 19M14 33Q32 48 50 33M20 48Q32 40 44 48"/></g><path d="M15 23L29 30L26 37Q17 37 15 23ZM49 23L35 30L38 37Q47 37 49 23Z" fill="#fff4e9" stroke="#260d18" stroke-width="2"/></symbol></defs></svg>
+    <dialog class="game-dialog" id="web-swing-dialog" aria-labelledby="game-title">
+      <header class="game-header"><div><p class="play-kicker">THE FRIENDLY SKYLINE CHALLENGE</p><h2 id="game-title">WEB <span>SWING.</span></h2></div><button class="play-close" type="button" data-close-game aria-label="Close Web Swing">×</button></header>
+      <div class="game-hud"><span>SCORE <strong id="game-score">000</strong></span><span>TIME <strong id="game-time">30</strong></span><span class="game-hearts" id="game-hearts" aria-label="3 hearts remaining">♥ ♥ ♥</span><span>BEST <strong id="game-best">000</strong></span></div>
+      <div class="game-progress"><span>DISTANCE <strong id="game-distance">0 m</strong></span><span>COINS <strong id="game-coins">00</strong></span><span>1 PT / M + 10 / COIN</span></div>
+      <div class="game-stage"><canvas id="swing-canvas" tabindex="0" aria-label="Web Swing game area" aria-describedby="game-controls"></canvas><div class="game-overlay" id="game-overlay"><span class="game-overlay-mark" aria-hidden="true">↗</span><p class="play-kicker" id="game-overlay-kicker">30 SECONDS / THREE HEARTS</p><h3 id="game-overlay-title">THE CITY IS YOURS.</h3><p id="game-overlay-description">Score 1 point per forward meter + 10 per coin. Dodge the drones.<br />Hold to swing, release to fly.</p><button class="play-launch" id="game-start" type="button">LET’S SWING <span aria-hidden="true">↗</span></button></div></div>
+      <footer class="game-footer"><p id="game-controls"><span class="game-mouse-control">HOLD MOUSE OR SPACE</span><span class="game-touch-control">TOUCH & HOLD</span> TO SWING · RELEASE TO FLY</p><button id="game-pause" type="button" disabled>PAUSE</button></footer><p id="game-status" class="sr-only" role="status"></p>
+    </dialog>
+    <button class="spidy-launcher" id="ask-spidy" type="button" aria-haspopup="dialog" aria-controls="spidy-panel" aria-expanded="false" hidden><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#spidy-face"/></svg><span>ASK SPIDY</span><span class="spidy-launcher-dot" aria-hidden="true"></span></button>
+    <dialog class="spidy-panel" id="spidy-panel" aria-labelledby="spidy-title">
+      <header class="spidy-header"><div class="spidy-avatar"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#spidy-face"/></svg></div><div><h2 id="spidy-title">SPIDY<span>.</span></h2><p id="spidy-mode">Portfolio guide</p></div><button class="play-close" id="spidy-close" type="button" aria-label="Close Spidy chat">×</button></header>
+      <div class="spidy-messages" id="spidy-messages" role="log" aria-label="Chat with Spidy" aria-live="polite" aria-relevant="additions"></div>
+      <div class="spidy-suggestions" id="spidy-suggestions"><button type="button" data-question="Tell me about Ashutosh">About Ashutosh</button><button type="button" data-question="Explain SmartML">Explain SmartML</button><button type="button" data-question="Which projects use Java?">Java projects</button><button type="button" data-question="How can I contact Ashutosh?">Get in touch</button></div>
+      <p class="spidy-status" id="spidy-status" role="status"></p>
+      <form class="spidy-form" id="spidy-form"><label class="sr-only" for="spidy-input">Ask about Ashutosh or a project</label><textarea id="spidy-input" rows="2" maxlength="800" placeholder="Ask about Ashutosh or a project…" required></textarea><button type="submit" id="spidy-send" aria-label="Send message"><span aria-hidden="true">↑</span></button></form>
+      <footer class="spidy-footer"><span id="spidy-note">Answers from the public portfolio.</span><button id="spidy-reset" type="button">NEW CHAT</button></footer>
+    </dialog>
+  </body>
+</html>
