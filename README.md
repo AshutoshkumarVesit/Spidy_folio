@@ -31,7 +31,7 @@ node scripts/antideploy.mjs deploy
 node scripts/antideploy.mjs status <taskId>
 ```
 
-The helper archives only Git-tracked/staged files, refuses private planning files or `.env` in that manifest, and sends only the Groq configuration and production runtime settings as deployment environment variables. It does not upload the local preview port. Docker also excludes env files and private notes from its build context. Deployments use folder uploads; pushing GitHub alone does not redeploy this application.
+The helper archives only Git-tracked/staged files, refuses private planning files or `.env` in that manifest, and sends only the Groq configuration and production runtime settings as deployment environment variables. It reads the application's current public URL and sets `ALLOWED_ORIGIN` explicitly, so the server accepts that address even when the platform omits `APP_URL`. It does not upload the local preview port. Docker also excludes env files and private notes from its build context. Deployments use folder uploads; pushing GitHub alone does not redeploy this application.
 
 ## Checks
 

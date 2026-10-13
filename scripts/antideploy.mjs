@@ -55,6 +55,9 @@ try {
   } else if (command === 'deploy') {
     process.loadEnvFile(path.join(root, '.env'));
     if (!process.env.GROQ_API_KEY) throw new Error('Local GROQ_API_KEY is missing.');
+    const applicationId = await project();
+    const application = await call(`/api/v1/applications/${applicationId}`);
+    const publicOrigin = new URL(application.url || `https://${application.subdomain}.antideploy.app`).origin;
     const archive = path.join(os.tmpdir(), 'spidy-antideploy.tar.gz');
     const fileList = path.join(os.tmpdir(), 'spidy-antideploy-files.txt');
     const files = execFileSync('git', ['ls-files', '-z'], { cwd: root, encoding: 'utf8' }).split('\0').filter(Boolean);
@@ -63,8 +66,8 @@ try {
     execFileSync('tar', ['-czf', archive, '-C', root, '-T', fileList], { stdio: 'pipe' });
     const form = new FormData();
     form.append('archive', new Blob([await fs.readFile(archive)], { type: 'application/gzip' }), 'portfolio.tar.gz');
-    form.append('env', JSON.stringify({ GROQ_API_KEY: process.env.GROQ_API_KEY, GROQ_MODEL: process.env.GROQ_MODEL || 'openai/gpt-oss-20b', NODE_ENV: 'production', HOST: '0.0.0.0' }));
-    const response = await fetch(`${base}/api/v1/deploy?applicationId=${await project()}`, { method: 'POST', headers: { Authorization: `Bearer ${await token()}` }, body: form, signal: AbortSignal.timeout(120000) });
+    form.append('env', JSON.stringify({ GROQ_API_KEY: process.env.GROQ_API_KEY, GROQ_MODEL: process.env.GROQ_MODEL || 'openai/gpt-oss-20b', NODE_ENV: 'production', HOST: '0.0.0.0', ALLOWED_ORIGIN: publicOrigin }));
+    const response = await fetch(`${base}/api/v1/deploy?applicationId=${applicationId}`, { method: 'POST', headers: { Authorization: `Bearer ${await token()}` }, body: form, signal: AbortSignal.timeout(120000) });
     const data = await response.json();
     if (!response.ok) throw new Error(`Deploy HTTP ${response.status}: ${data.error || data.code || 'request failed'}`);
     report(data);
