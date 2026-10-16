@@ -375,7 +375,9 @@ html:has(.cinematic-motion) { scroll-behavior: smooth; }
 .map-core > span:first-child { color: #b79ca8; font: 7px monospace; letter-spacing: 1.4px; }
 .map-core strong { margin: 10px 0; font: 400 clamp(20px, 2.5vw, 40px)/1 Impact, 'Arial Narrow', sans-serif; }
 .map-core-dot { width: 4px; height: 4px; background: #ff4547; border-radius: 50%; }
-.map-label { position: absolute; font: 400 clamp(22px, 2.5vw, 34px)/1 Impact, 'Arial Narrow', sans-serif; color: #bcaab4; transition: color .3s; }
+.map-label { position: absolute; margin: 0; border: 0; padding: 8px 0; min-width: 44px; min-height: 44px; background: transparent; text-align: left; font: 400 clamp(22px, 2.5vw, 34px)/1 Impact, 'Arial Narrow', sans-serif; color: #bcaab4; cursor: pointer; touch-action: manipulation; transition: color .3s; }
+.map-label:hover { color: #fff1ed; }
+.map-label:focus-visible { outline: 2px solid #ff626b; outline-offset: 6px; border-radius: 2px; }
 .map-label > span { display: block; margin-top: 8px; font: 7px monospace; letter-spacing: 1.1px; color: #8e7783; }
 .map-label-web { top: 18%; left: 2%; }
 .map-label-mobile { top: 18%; right: 0; text-align: right; }

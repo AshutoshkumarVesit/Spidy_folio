@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Ashutosh Tripathi — Portfolio concept</title>
-    <link rel="stylesheet" href="style.css?v=play-spidy-1" />
+    <link rel="stylesheet" href="style.css?v=toolkit-controls-2" />
     <link rel="stylesheet" href="play.css?v=3" />
     <script type="module" src="reveal.js?v=soft-particles-2"></script>
     <script type="module" src="sections.js?v=motion-polish-1"></script>
@@ -209,20 +209,20 @@
           <div class="toolkit-heading-row"><h2 id="skills-title">THE TOOLS.<br /><span>BEHIND THE WORK.</span></h2><p>Learning by building.<br />Connecting ideas with code.</p></div>
         </header>
         <div class="toolkit-layout">
-          <div class="skill-map" aria-hidden="true">
+          <div class="skill-map" role="group" aria-label="Explore skills on the web map">
             <span class="map-index">AT / CONNECTED BY CURIOSITY</span>
-            <svg class="toolkit-web" viewBox="0 0 600 600" fill="none">
+            <svg class="toolkit-web" viewBox="0 0 600 600" fill="none" aria-hidden="true">
               <g class="toolkit-web-weave"><path pathLength="1" d="M300 75V525M75 300H525M141 141L459 459M141 459L459 141"/><path pathLength="1" d="M300 75Q333 165 459 141Q430 250 525 300Q429 335 459 459Q350 430 300 525Q267 429 141 459Q170 350 75 300Q171 265 141 141Q250 170 300 75Z"/><path pathLength="1" d="M300 132Q325 199 419 181Q397 262 468 300Q396 326 419 419Q338 397 300 468Q275 396 181 419Q203 338 132 300Q204 274 181 181Q262 203 300 132Z"/><path pathLength="1" d="M300 192Q316 235 376 224Q362 276 408 300Q362 317 376 376Q324 362 300 408Q284 362 224 376Q238 324 192 300Q238 283 224 224Q276 238 300 192Z"/></g>
               <g class="map-route" data-map-route="web"><path d="M300 300L141 141"/><circle cx="141" cy="141" r="6"/></g>
               <g class="map-route" data-map-route="mobile"><path d="M300 300L459 141"/><circle cx="459" cy="141" r="6"/></g>
               <g class="map-route" data-map-route="ai"><path d="M300 300L459 459"/><circle cx="459" cy="459" r="6"/></g>
               <g class="map-route" data-map-route="data"><path d="M300 300L141 459"/><circle cx="141" cy="459" r="6"/></g>
             </svg>
-            <div class="map-core"><span>BUILD WITH</span><strong id="map-focus">JAVA</strong><span class="map-core-dot"></span></div>
-            <span class="map-label map-label-web">JAVA<span>01 / WEB</span></span>
-            <span class="map-label map-label-mobile">ANDROID<span>02 / MOBILE</span></span>
-            <span class="map-label map-label-ai">PYTHON<span>03 / AI &amp; ML</span></span>
-            <span class="map-label map-label-data">SQL<span>04 / DATA</span></span>
+            <div class="map-core" aria-hidden="true"><span>BUILD WITH</span><strong id="map-focus">JAVA</strong><span class="map-core-dot"></span></div>
+            <button class="map-label map-label-web" type="button" data-skill="web" aria-pressed="true" aria-controls="skill-proof" aria-label="Web and Backend — Java">JAVA<span>01 / WEB</span></button>
+            <button class="map-label map-label-mobile" type="button" data-skill="mobile" aria-pressed="false" aria-controls="skill-proof" aria-label="Android Development — Android">ANDROID<span>02 / MOBILE</span></button>
+            <button class="map-label map-label-ai" type="button" data-skill="ai" aria-pressed="false" aria-controls="skill-proof" aria-label="AI and Machine Learning — Python">PYTHON<span>03 / AI &amp; ML</span></button>
+            <button class="map-label map-label-data" type="button" data-skill="data" aria-pressed="false" aria-controls="skill-proof" aria-label="Data and Foundations — SQL">SQL<span>04 / DATA</span></button>
             <span class="map-caption">DIFFERENT TOOLS. CONNECTED IDEAS.</span>
           </div>
           <div class="toolkit-capabilities" data-reveal>
