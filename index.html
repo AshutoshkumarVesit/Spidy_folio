@@ -11,7 +11,7 @@
     <script type="module" src="navigation.js?v=2"></script>
     <script type="module" src="spider-cursor.js?v=2"></script>
     <script type="module" src="motion-details.js?v=1"></script>
-    <script type="module" src="portfolio-play.js?v=6"></script>
+    <script type="module" src="portfolio-play.js?v=7"></script>
   </head>
   <body>
     <div id="cursor-spider" aria-hidden="true" hidden>
@@ -284,10 +284,10 @@
     <dialog class="spidy-panel" id="spidy-panel" aria-labelledby="spidy-title">
       <header class="spidy-header"><div class="spidy-avatar"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#spidy-face"/></svg></div><div><h2 id="spidy-title">SPIDY<span>.</span></h2><p id="spidy-mode">Portfolio guide</p></div><button class="play-close" id="spidy-close" type="button" aria-label="Close Spidy chat">×</button></header>
       <div class="spidy-messages" id="spidy-messages" role="log" aria-label="Chat with Spidy" aria-live="polite" aria-relevant="additions"></div>
-      <div class="spidy-suggestions" id="spidy-suggestions"><button type="button" data-question="Tell me about Ashutosh">About Ashutosh</button><button type="button" data-question="Explain SmartML">Explain SmartML</button><button type="button" data-question="Which projects use Java?">Java projects</button><button type="button" data-question="How can I contact Ashutosh?">Get in touch</button></div>
+      <div class="spidy-suggestions" id="spidy-suggestions"><button type="button" data-question="Tell me about Ashutosh">About Ashutosh</button><button type="button" data-question="Explain SmartML">Explain SmartML</button><button type="button" data-question="What education and CGPA are listed in Ashutosh’s resume?">Resume &amp; CGPA</button><button type="button" data-question="How can I contact Ashutosh?">Get in touch</button></div>
       <p class="spidy-status" id="spidy-status" role="status"></p>
       <form class="spidy-form" id="spidy-form"><label class="sr-only" for="spidy-input">Ask about Ashutosh or a project</label><textarea id="spidy-input" rows="2" maxlength="800" placeholder="Ask about Ashutosh or a project…" required></textarea><button type="submit" id="spidy-send" aria-label="Send message"><span aria-hidden="true">↑</span></button></form>
-      <footer class="spidy-footer"><span id="spidy-note">Answers from the public portfolio.</span><button id="spidy-reset" type="button">NEW CHAT</button></footer>
+      <footer class="spidy-footer"><span id="spidy-note">Answers from the resume and public portfolio.</span><button id="spidy-reset" type="button">NEW CHAT</button></footer>
     </dialog>
   </body>
 </html>

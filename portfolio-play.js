@@ -1,4 +1,4 @@
-import { setupSpidy } from './spidy-chat.js?v=1';
+import { setupSpidy } from './spidy-chat.js?v=2';
 
 const dialog = document.querySelector('#web-swing-dialog');
 let game, opening = false, opener;

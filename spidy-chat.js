@@ -19,9 +19,9 @@ export function setupSpidy() {
   window.addEventListener('scroll', scheduleArea, { passive: true });
   window.addEventListener('resize', scheduleArea, { passive: true });
   document.addEventListener('portfolio:overlay', scheduleArea);
-  function setMode(mode) {
-    document.querySelector('#spidy-mode').textContent = mode === 'ai' ? 'AI portfolio guide' : 'Saved portfolio answers';
-    document.querySelector('#spidy-note').textContent = mode === 'ai' ? 'AI questions are processed by Groq.' : 'Answers from the public portfolio.';
+  function setMode(mode, state) {
+    document.querySelector('#spidy-mode').textContent = mode === 'ai' ? state === 'configured' ? 'Groq AI configured' : 'Groq AI · live reply' : 'Saved resume & portfolio answers';
+    document.querySelector('#spidy-note').textContent = mode === 'ai' ? 'AI questions are processed by Groq.' : 'Answers from the resume and public portfolio.';
   }
   function addMessage(role, text, answer) {
     const article = document.createElement('div'); article.className = `spidy-message ${role}`;
@@ -59,12 +59,12 @@ export function setupSpidy() {
     generation++; request?.abort(); request = null; busy = false; send.disabled = false;
     history = []; messages.replaceChildren(); input.value = ''; status.textContent = '';
     suggestions.hidden = false;
-    addMessage('assistant', 'Hey! I’m Spidy, your guide to Ashutosh’s corner of the web. Want a quick introduction, a project walkthrough, or a look at his skills?');
+    addMessage('assistant', 'Hey! I’m Spidy, your guide to Ashutosh’s corner of the web. Ask me about his resume, education, projects, skills or activities.');
   }
   async function open() {
     if (panel.open) return;
     panel.show(); launcher.hidden = true; launcher.setAttribute('aria-expanded', 'true'); input.focus({ preventScroll: true });
-    try { const response = await fetch('/api/chat/status', { signal: AbortSignal.timeout(3000) }); if (response.ok) setMode((await response.json()).mode); else setMode('saved'); }
+    try { const response = await fetch('/api/chat/status', { signal: AbortSignal.timeout(5000) }); if (response.ok) { const data = await response.json(); setMode(data.mode, data.state); } else setMode('saved'); }
     catch { setMode('saved'); }
   }
   function close(restore = true) {
@@ -77,11 +77,11 @@ export function setupSpidy() {
     if (question.length > 800) { status.textContent = 'Keep your question under 800 characters.'; return; }
     busy = true; send.disabled = true; suggestions.hidden = true;
     input.value = ''; addMessage('user', question);
-    status.textContent = 'Spidy is checking the web…';
+    status.textContent = 'Spidy is checking the resume and portfolio…';
     const current = generation;
     const controller = new AbortController();
     request = controller;
-    const timeout = setTimeout(() => controller.abort(), 15000);
+    const timeout = setTimeout(() => controller.abort(), 25000);
     let answer, limited = false;
     try {
       const response = await fetch('/api/chat', { method: 'POST', signal: controller.signal, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: question, history: history.slice(-6) }) });
@@ -89,8 +89,8 @@ export function setupSpidy() {
       if (!response.ok) throw new Error('Chat unavailable');
       answer = await response.json();
       if (typeof answer.answer !== 'string' || answer.answer.length > 1500 || !Array.isArray(answer.actionIds) || !Array.isArray(answer.sourceIds)) throw new Error('Invalid answer');
-    } catch {
-      answer = { ...savedAnswer(question, history), mode: 'saved' };
+    } catch (error) {
+      answer = { ...savedAnswer(question, history), mode: 'saved', reason: limited ? 'quota' : error.name === 'AbortError' ? 'timeout' : 'connection' };
     } finally { clearTimeout(timeout); }
     if (current !== generation) return;
     setMode(answer.mode);
@@ -98,7 +98,15 @@ export function setupSpidy() {
     history.push({ role: 'user', content: question }, { role: 'assistant', content: answer.answer.slice(0, 1200) });
     history = history.slice(-6);
     busy = false; send.disabled = false; request = null;
-    status.textContent = limited ? 'A saved answer while live chat takes a short break.' : '';
+    const fallbackNotices = {
+      'not-configured': 'Live AI isn’t connected. This answer comes from the saved resume and portfolio.',
+      authentication: 'Live AI couldn’t connect. Showing a saved resume or portfolio answer.',
+      quota: 'Live AI has reached its request limit. Showing a saved answer for now.',
+      busy: 'Live AI is busy. Showing a saved answer for now.',
+      timeout: 'Live AI took too long. Showing a saved answer; you can try again.',
+      connection: 'Couldn’t reach live chat. Showing a saved resume or portfolio answer.'
+    };
+    status.textContent = answer.mode === 'saved' && answer.reason !== 'scope' ? fallbackNotices[answer.reason] || 'Live AI couldn’t finish this reply. Showing a saved resume or portfolio answer.' : '';
   }
   launcher.addEventListener('click', open);
   document.querySelector('#spidy-close').addEventListener('click', () => close());
